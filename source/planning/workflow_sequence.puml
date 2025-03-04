@@ -1,0 +1,55 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+'- What does wild success look like?
+'  - I see a job posting that looks interesting and make a new [job-posting](https://app.tana.inc?nodeid=JemTzGdaZRyv) node with its information.
+'    - Add info about the job title, link to the posting, and related news articles
+'    - Add a link to my CV node
+'  - A Tana command kicks off an AWS serverless app that creates a RAG graph with my CV and specific job information
+'  - The app finds keywords in the job posting and fills out more detail from the news articles. It then matches that to specifics of my CV
+'    - Adds keywords to the [job-posting](https://app.tana.inc?nodeid=JemTzGdaZRyv) node.
+'    - Creates a corresponding [job-application](https://app.tana.inc?nodeid=dV79sk7jwyHY) node.
+'  - The app condenses a long form cover letter to focus on the areas relevant to the job.
+'  - The app chooses the best bullet points for my CV and shortens the cover letter to make an overview section.
+'  - The app makes LaTeX code and generates PDFs for each document.
+'  - The app attaches the PDF documents and the text of the cover letter to Tana.
+
+!pragma teoz true
+
+actor "User" as U
+participant "Tana" as T
+participant λ as A
+database RAG as R
+entity LLM as L
+
+[-> U: Find job posting
+U -> T: Add #job-posting node
+T -> T: Make #job-application node
+U -> T: Add link to CV node
+U <- U: Find news articles
+U -> T: Add links to news articles
+U -> T: Kick off AI
+& T -> A: Submit to API
+A -> R **: Index context documents
+A -> L: Prompt for keywords in posting
+L -> A: Return keywords in posting
+& A -> T: Add keywords to\n #job-posting
+|||
+A -> R: Retrieve news parts & \nlong cover letter
+& R -> L
+L -> A: Generate shorter cover letter
+|||
+A -> L: Generate CV overview section
+L -> A
+|||
+A -> R: Match keywords to CV
+& R -> L
+L -> A: Return matching accomplishments
+|||
+A -> A: Build LaTeX documents
+A -> T: Attach PDFs to #job-application
+A -> T: Attach text to #job-application
+
+T -> U: Done
+
+@enduml

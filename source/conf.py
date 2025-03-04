@@ -18,6 +18,7 @@ extensions = [
     'sphinx.ext.githubpages',
     'myst_parser',
     'sphinx.ext.autosectionlabel',
+    'sphinxcontrib.plantuml',
 ]
 
 source_suffix = ['.rst', '.md']
@@ -51,3 +52,6 @@ html_static_path = ['_static']
 html_theme_options = {
     'body_max_width': 'none'
 }
+
+plantuml = r'java -jar "C:\Users\rward\AppData\Local\JetBrains\PyCharm2024.3\markdown\download\plantumllanguageextension\plantuml.jar"'
+plantuml_output_format = 'svg'
