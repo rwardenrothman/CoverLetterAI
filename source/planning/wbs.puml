@@ -1,0 +1,21 @@
+@startwbs
+'https://plantuml.com/wbs-diagram
+
+* Cover Letter AI Application WBS
+** Set up LLM environment
+*** Choose an LLM
+*** Set up LangChain
+** Process Inputs
+*** Get posting keywords
+*** Find company goals/priorities
+*** Generate CV knowledge graph
+*** Make chatbot that interacts with the RAG
+** Generate Cover Letter/CV
+*** Generate cover letter
+*** Generate CV Summary
+*** Extract relevant accomplishments
+*** Generate LaTeX documents
+** Implement Tana UI
+*** AWS Lambda functions
+*** AWS API Gateway
+@endwbs

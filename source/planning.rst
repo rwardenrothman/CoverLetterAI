@@ -6,3 +6,4 @@ Project Planning
    :caption: Contents:
 
    planning/sequence
+   planning/wbs
