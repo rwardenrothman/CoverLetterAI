@@ -19,6 +19,7 @@ extensions = [
     'myst_parser',
     'sphinx.ext.autosectionlabel',
     'sphinxcontrib.plantuml',
+    'nbsphinx',
 ]
 
 source_suffix = ['.rst', '.md']
@@ -55,3 +56,6 @@ html_theme_options = {
 
 plantuml = r'java -jar "C:\Users\rward\AppData\Local\JetBrains\PyCharm2024.3\markdown\download\plantumllanguageextension\plantuml.jar"'
 plantuml_output_format = 'svg'
+
+import os
+os.environ['PATH'] += r';C:\Users\rward\AppData\Local\Pandoc'

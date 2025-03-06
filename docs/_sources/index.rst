@@ -15,4 +15,5 @@ documentation for details.
    :maxdepth: 2
    :caption: Contents:
 
-   planning.rst
+   planning
+   sandboxes
